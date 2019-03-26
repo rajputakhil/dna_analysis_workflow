@@ -1,4 +1,4 @@
-# DNA Analysis Workflow
+# DNA Analysis Workflow - Download FASTQ, DNA Analysis, BWA Alignment
 
 ## 01_FASTQ_download_ENA
 
