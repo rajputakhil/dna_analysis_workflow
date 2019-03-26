@@ -1,4 +1,4 @@
-# Pipeline
+# DNA Analysis Workflow
 
 ## 01_FASTQ_download_ENA
 
