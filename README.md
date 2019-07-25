@@ -132,8 +132,11 @@ bwa index -a bwtsw NC_018658.fna
 ```
 
 -p STR	Prefix of the output database [same as db filename]
+
 -a STR	Algorithm for constructing BWT index. Available options are:
+
 is	IS linear-time algorithm for constructing suffix array. It requires 5.37N memory where N is the size of the database. IS is moderately fast, but does not work with database larger than 2GB. IS is the default algorithm due to its simplicity. The current codes for IS algorithm are reimplemented by Yuta Mori.
+
 bwtsw	Algorithm implemented in BWT-SW. This method works with the whole human genome.
 
 #### Perform the Alignment
@@ -142,3 +145,4 @@ Next perform the alignment:
 ```sh
 bwa mem -p NC_018658.fna ecoli_pe.fq > aln.x.ecoli_NC_018658.sam
 ```
+-p	Assume the first input query file is interleaved paired-end FASTA/Q. 
