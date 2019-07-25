@@ -130,30 +130,15 @@ Next prepare the index to the reference for alignment:
 ```sh
 bwa index -a bwtsw NC_018658.fna
 ```
+
+-p STR	Prefix of the output database [same as db filename]
+-a STR	Algorithm for constructing BWT index. Available options are:
+is	IS linear-time algorithm for constructing suffix array. It requires 5.37N memory where N is the size of the database. IS is moderately fast, but does not work with database larger than 2GB. IS is the default algorithm due to its simplicity. The current codes for IS algorithm are reimplemented by Yuta Mori.
+bwtsw	Algorithm implemented in BWT-SW. This method works with the whole human genome.
+
 #### Perform the Alignment
 Next perform the alignment:
 
 ```sh
 bwa mem -p NC_018658.fna ecoli_pe.fq > aln.x.ecoli_NC_018658.sam
 ```
-#### Check for supplementary alignments
-It's easiest to use samtools to determine which rows are supplementary alignments:
-
-```sh
-samtools view -f 0x800 -S aln.x.ecoli_NC_018658.sam
-```
-The alignment example does not contain any secondary alignments, but if it did you could retrieve them as such:
-
-```sh
-samtools view -f 0x100 -S aln.x.ecoli_NC_018658.sam
-```
-Below is a nice website where you can then type up the flag numbers, and it will checkbox for you which flags are set:
-
-http://picard.sourceforge.net/explain-flags.html
-
-To download samtools, below is the link:
-
-```sh
-http://sourceforge.net/projects/samtools/files/samtools/0.1.19/samtools-0.1.19.tar.bz2/download
-```
-It will require compiling as with bwa, but it's fairly straightforward.
